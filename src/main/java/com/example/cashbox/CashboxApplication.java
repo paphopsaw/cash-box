@@ -2,16 +2,23 @@ package com.example.cashbox;
 
 import com.example.cashbox.centers.Center;
 import com.example.cashbox.centers.CenterRepository;
+import com.example.cashbox.trucks.Truck;
+import com.example.cashbox.trucks.TruckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
 public class CashboxApplication {
 	@Autowired
 	private CenterRepository centerRepository;
+
+	@Autowired
+	private TruckRepository truckRepository;
 
 	@PostConstruct
 	public void initializeData() {
@@ -34,6 +41,24 @@ public class CashboxApplication {
 				4_000_000.00);
 		centerRepository.save(center1);
 		centerRepository.save(center2);
+
+		Truck truck1 = new Truck(
+				1,
+				13.73811900540664,
+				100.49090925318582
+		);
+		Truck truck2 = new Truck(
+				2,
+				13.745664098170202,
+				100.48543726905037
+		);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		LocalDateTime dateTime = LocalDateTime.parse("2022-03-18 23:30:10", formatter);
+		truck1.setLastUpdated(dateTime);
+		truck2.setLastUpdated(dateTime);
+		truckRepository.save(truck1);
+		truckRepository.save(truck2);
+
 	}
 
 	public static void main(String[] args) {
