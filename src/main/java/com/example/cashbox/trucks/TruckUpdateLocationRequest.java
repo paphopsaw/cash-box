@@ -7,6 +7,15 @@ public class TruckUpdateLocationRequest {
     private double longitude;
     private String dateTimeString;
 
+    public TruckUpdateLocationRequest() {
+    }
+
+    public TruckUpdateLocationRequest(double latitude, double longitude, String dateTimeString) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.dateTimeString = dateTimeString;
+    }
+
     public double getLatitude() {
         return latitude;
     }

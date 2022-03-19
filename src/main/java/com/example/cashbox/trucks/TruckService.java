@@ -43,7 +43,7 @@ public class TruckService {
         }
     }
 
-    public LocalDateTime parseDateTime(String dateTimeString) {
+    private LocalDateTime parseDateTime(String dateTimeString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return LocalDateTime.parse(dateTimeString, formatter);
     }
