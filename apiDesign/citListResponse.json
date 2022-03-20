@@ -1,0 +1,20 @@
+{
+  "citList": [
+    {
+      "id": 1,
+      "senderId": 1,
+      "receiverId": 2,
+      "deliveryTruckId": 0,
+      "amountTHB": "100.00",
+      "amountUSD": "200.00",
+      "status": "generated",
+      "lastUpdated": "2022-03-20T16:37:30.811278",
+      "createdAt": "2022-03-20T16:37:30.811278",
+      "receivedAt": null,
+      "deliveredAt": null,
+      "confirmedAt": null,
+      "amountTHBConfirmed": null,
+      "amountUSDConfirmed": null
+    }
+  ]
+}
