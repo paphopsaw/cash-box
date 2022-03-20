@@ -132,7 +132,7 @@ class CITServiceTest {
         citService.setTruckRepository(truckRepository);
         citService.setCenterRepository(centerRepository);
         CIT result = citService.create(1, 2, new BigDecimal("1000"), new BigDecimal("200"));
-        Center sender = centerRepository.getById(1);
+        Center sender = centerRepository.findById(1).get();
         //Assert
         assertEquals(new BigDecimal("1000"), result.getAmountTHB());
         assertEquals(new BigDecimal("200"), result.getAmountUSD());
@@ -186,7 +186,7 @@ class CITServiceTest {
         citService.setTruckRepository(truckRepository);
         citService.setCenterRepository(centerRepository);
         citService.confirm(1, new BigDecimal("99"), new BigDecimal("88"));
-        CIT result = citRepository.getById(1);
+        CIT result = citRepository.findById(1).get();
         //Assert
         assertEquals(CITStatus.CONFIRMED, result.getStatus());
         assertEquals(new BigDecimal("99"), result.getAmountTHBConfirmed());
