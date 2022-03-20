@@ -8,7 +8,6 @@ public class CenterResponse {
     private double longitude;
     private String balanceTHB;
     private String balanceUSD;
-    private String message;
 
 
     public void setCenter(Center center) {
@@ -75,13 +74,5 @@ public class CenterResponse {
 
     public void setBalanceUSD(String balanceUSD) {
         this.balanceUSD = balanceUSD;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.cashbox.trucks;
 
+import com.example.cashbox.MessageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,10 +12,10 @@ public class TruckControllerAdvice {
     @ExceptionHandler
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public TruckResponse truckNotFound(TruckNotFoundException e) {
-        TruckResponse truckResponse = new TruckResponse();
-        truckResponse.setMessage("Truck " + e.getMessage() + " not found.");
-        return truckResponse;
+    public MessageResponse truckNotFound(TruckNotFoundException e) {
+        MessageResponse messageResponse = new MessageResponse();
+        messageResponse.setMessage("Truck " + e.getMessage() + " not found.");
+        return messageResponse;
     }
 
 }

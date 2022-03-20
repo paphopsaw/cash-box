@@ -1,5 +1,6 @@
 package com.example.cashbox.trucks;
 
+import com.example.cashbox.MessageResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,7 @@ class TruckControllerTest {
         when(truckRepository.findById(1)).thenReturn(Optional.of(mockUpTruckData()));
         //Act
         TruckResponse response1 = testRestTemplate.getForObject("/api/truck-management/truck/1", TruckResponse.class);
-        TruckResponse response2 = testRestTemplate.getForObject("/api/truck-management/truck/5", TruckResponse.class);
+        MessageResponse response2 = testRestTemplate.getForObject("/api/truck-management/truck/5", MessageResponse.class);
         //Assert
         assertEquals(13.73811900540664, response1.getLatitude());
         assertEquals("Truck ID: 5 not found.", response2.getMessage());
@@ -82,9 +83,9 @@ class TruckControllerTest {
         //Act
         TruckListResponse response1 = testRestTemplate.getForObject("/api/truck-management/trucks", TruckListResponse.class);
         //Assert
-        assertEquals(13.73811900540664, response1.getTruckList().get(0).getLatitude());
-        assertEquals(13.745664098170202, response1.getTruckList().get(1).getLatitude());
-        assertEquals(2, response1.getTruckList().size());
+        assertEquals(13.73811900540664, response1.getTruckResponseList().get(0).getLatitude());
+        assertEquals(13.745664098170202, response1.getTruckResponseList().get(1).getLatitude());
+        assertEquals(2, response1.getTruckResponseList().size());
     }
 
     @Test
@@ -101,8 +102,8 @@ class TruckControllerTest {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(jsonString, headers);
         //Act
-        TruckResponse response1 = testRestTemplate.postForObject("/api/truck-management/truck/1/updateLocation", entity, TruckResponse.class);
-        TruckResponse response2 = testRestTemplate.postForObject("/api/truck-management/truck/5/updateLocation", entity, TruckResponse.class);
+        MessageResponse response1 = testRestTemplate.postForObject("/api/truck-management/truck/1/updateLocation", entity, MessageResponse.class);
+        MessageResponse response2 = testRestTemplate.postForObject("/api/truck-management/truck/5/updateLocation", entity, MessageResponse.class);
         TruckResponse response3 = testRestTemplate.getForObject("/api/truck-management/truck/1", TruckResponse.class);
         //Assert
         assertEquals("Location updated.", response1.getMessage());

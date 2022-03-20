@@ -7,7 +7,6 @@ public class TruckResponse {
     private double latitude;
     private double longitude;
     private LocalDateTime lastUpdate;
-    private String message;
 
     public void setTruck(Truck truck) {
         this.id = truck.getId();
@@ -46,13 +45,5 @@ public class TruckResponse {
 
     public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

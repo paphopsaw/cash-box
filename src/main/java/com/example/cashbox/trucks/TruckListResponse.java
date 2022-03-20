@@ -3,22 +3,13 @@ package com.example.cashbox.trucks;
 import java.util.List;
 
 public class TruckListResponse {
-    private List<Truck> truckList;
-    private String message;
+    private List<TruckResponse> truckResponseList;
 
-    public List<Truck> getTruckList() {
-        return truckList;
+    public List<TruckResponse> getTruckResponseList() {
+        return truckResponseList;
     }
 
-    public void setTruckList(List<Truck> truckList) {
-        this.truckList = truckList;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public void setTruckResponseList(List<TruckResponse> truckResponseList) {
+        this.truckResponseList = truckResponseList;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.cashbox.centers;
 
+import com.example.cashbox.MessageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,9 +12,9 @@ public class CenterControllerAdvice {
     @ExceptionHandler
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public CenterResponse centerNotFound(CenterNotFoundException e) {
-        CenterResponse centerResponse = new CenterResponse();
-        centerResponse.setMessage("Center " + e.getMessage() + " not found.");
-        return centerResponse;
+    public MessageResponse centerNotFound(CenterNotFoundException e) {
+        MessageResponse messageResponse = new MessageResponse();
+        messageResponse.setMessage("Center " + e.getMessage() + " not found.");
+        return messageResponse;
     }
 }

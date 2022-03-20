@@ -1,8 +1,12 @@
 package com.example.cashbox.trucks;
 
+import com.example.cashbox.MessageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class TruckController {
@@ -21,19 +25,26 @@ public class TruckController {
     @GetMapping("/api/truck-management/trucks")
     public TruckListResponse getTrucks() {
         TruckListResponse truckListResponse = new TruckListResponse();
-        truckListResponse.setTruckList(truckService.getAll());
+        List<Truck> truckList = truckService.getAll();
+        List<TruckResponse> truckResponseList = new ArrayList<>();
+        for (Truck truck : truckList) {
+            TruckResponse truckResponse = new TruckResponse();
+            truckResponse.setTruck(truck);
+            truckResponseList.add(truckResponse);
+        }
+        truckListResponse.setTruckResponseList(truckResponseList);
         return truckListResponse;
     }
 
     @PostMapping(value = "/api/truck-management/truck/{id}/updateLocation",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public TruckResponse updateLocation(@PathVariable int id,
+    public MessageResponse updateLocation(@PathVariable int id,
                                         @RequestBody TruckUpdateLocationRequest truckUpdateLocationRequest) {
         truckService.updateLocation(id, truckUpdateLocationRequest);
-        TruckResponse truckResponse = new TruckResponse();
-        truckResponse.setMessage("Location updated.");
-        return truckResponse;
+        MessageResponse messageResponse = new MessageResponse();
+        messageResponse.setMessage("Location updated.");
+        return messageResponse;
     }
 
 }

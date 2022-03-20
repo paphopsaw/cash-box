@@ -24,8 +24,8 @@ class CenterServiceTest {
                 "273 Samsen Rd, Wat Sam Phraya, Phra Nakhon, Bangkok 10200",
                 13.768747,
                 100.500471,
-                new BigDecimal("1_000_000_000.00"),
-                new BigDecimal( "20_000_000.00"));
+                new BigDecimal("1000000000.00"),
+                new BigDecimal( "20000000.00"));
     }
 
     @Test
@@ -39,7 +39,7 @@ class CenterServiceTest {
         //Assert
         assertEquals("Main center", result.getName());
         assertEquals(13.768747, result.getLatitude());
-        assertEquals(new BigDecimal("1_000_000_000.00"), result.getBalanceTHB());
+        assertEquals(new BigDecimal("1000000000.00"), result.getBalanceTHB());
     }
 
     @Test
@@ -49,12 +49,12 @@ class CenterServiceTest {
         //Act
         CenterService centerService = new CenterService();
         centerService.setCenterRepository(centerRepository);
-        centerService.setBalance(1,Currency.THB, new BigDecimal("500_000_000.00"));
-        centerService.setBalance(1,Currency.USD, new BigDecimal("4_000_000.00"));
+        centerService.setBalance(1,Currency.THB, new BigDecimal("500000000.00"));
+        centerService.setBalance(1,Currency.USD, new BigDecimal("4000000.00"));
         Center result = centerService.getById(1);
         //Assert
-        assertEquals(new BigDecimal("500_000_000.00"), result.getBalanceTHB());
-        assertEquals(new BigDecimal("4_000_000.00"), result.getBalanceUSD());
+        assertEquals(new BigDecimal("500000000.00"), result.getBalanceTHB());
+        assertEquals(new BigDecimal("4000000.00"), result.getBalanceUSD());
 
     }
 }
