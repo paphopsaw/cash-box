@@ -3,6 +3,7 @@ package com.example.cashbox.centers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -23,7 +24,7 @@ public class CenterService {
         throw new CenterNotFoundException(id);
     }
 
-    public void setBalance(int id, Currency currency, double amount) {
+    public void setBalance(int id, Currency currency, BigDecimal amount) {
         Optional<Center> result = centerRepository.findById(id);
         if (result.isPresent()) {
             Center center = result.get();

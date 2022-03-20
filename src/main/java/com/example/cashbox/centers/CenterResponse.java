@@ -6,8 +6,8 @@ public class CenterResponse {
     private String address;
     private double latitude;
     private double longitude;
-    private double balanceTHB;
-    private double balanceUSD;
+    private String balanceTHB;
+    private String balanceUSD;
     private String message;
 
 
@@ -17,8 +17,8 @@ public class CenterResponse {
         this.address = center.getAddress();
         this.latitude = center.getLatitude();
         this.longitude = center.getLongitude();
-        this.balanceTHB = center.getBalanceTHB();
-        this.balanceUSD = center.getBalanceUSD();
+        this.balanceTHB = center.getBalanceTHB().toString();
+        this.balanceUSD = center.getBalanceUSD().toString();
     }
 
     public int getId() {
@@ -61,19 +61,19 @@ public class CenterResponse {
         this.longitude = longitude;
     }
 
-    public double getBalanceTHB() {
+    public String getBalanceTHB() {
         return balanceTHB;
     }
 
-    public void setBalanceTHB(double balanceTHB) {
+    public void setBalanceTHB(String balanceTHB) {
         this.balanceTHB = balanceTHB;
     }
 
-    public double getBalanceUSD() {
+    public String getBalanceUSD() {
         return balanceUSD;
     }
 
-    public void setBalanceUSD(double balanceUSD) {
+    public void setBalanceUSD(String balanceUSD) {
         this.balanceUSD = balanceUSD;
     }
 

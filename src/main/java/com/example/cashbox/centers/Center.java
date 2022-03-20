@@ -2,6 +2,7 @@ package com.example.cashbox.centers;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
 public class Center {
@@ -11,13 +12,13 @@ public class Center {
     private String address;
     private double latitude;
     private double longitude;
-    private double balanceTHB;
-    private double balanceUSD;
+    private BigDecimal balanceTHB;
+    private BigDecimal balanceUSD;
 
 
     public Center() {}
 
-    public Center(int id, String name, String address, double latitude, double longitude, double balanceTHB, double balanceUSD) {
+    public Center(int id, String name, String address, double latitude, double longitude, BigDecimal balanceTHB, BigDecimal balanceUSD) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -67,19 +68,19 @@ public class Center {
         this.longitude = longitude;
     }
 
-    public double getBalanceTHB() {
+    public BigDecimal getBalanceTHB() {
         return balanceTHB;
     }
 
-    public void setBalanceTHB(double balanceTHB) {
+    public void setBalanceTHB(BigDecimal balanceTHB) {
         this.balanceTHB = balanceTHB;
     }
 
-    public double getBalanceUSD() {
+    public BigDecimal getBalanceUSD() {
         return balanceUSD;
     }
 
-    public void setBalanceUSD(double balanceUSD) {
+    public void setBalanceUSD(BigDecimal balanceUSD) {
         this.balanceUSD = balanceUSD;
     }
 }

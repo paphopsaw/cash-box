@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,8 +30,8 @@ class CenterControllerTest {
                 "273 Samsen Rd, Wat Sam Phraya, Phra Nakhon, Bangkok 10200",
                 13.768747,
                 100.500471,
-                1_000_000_000.00,
-                20_000_000.00);
+                new BigDecimal("1_000_000_000.00"),
+                new BigDecimal("20_000_000.00"));
         when(centerRepository.findById(1)).thenReturn(Optional.of(center1));
         //Act
         CenterResponse response1 = testRestTemplate.getForObject("/api/center-management/center/1", CenterResponse.class);
