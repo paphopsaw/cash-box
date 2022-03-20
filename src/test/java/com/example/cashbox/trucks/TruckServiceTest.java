@@ -101,12 +101,7 @@ class TruckServiceTest {
         //Act
         TruckService truckService  = new TruckService();
         truckService.setTruckRepository(truckRepository);
-        TruckUpdateLocationRequest truckUpdateLocationRequest = new TruckUpdateLocationRequest(
-                10.0,
-                110.0,
-                "2022-03-20 01:39:05"
-        );
-        truckService.updateLocation(1, truckUpdateLocationRequest);
+        truckService.updateLocation(1, 10.0, 110.0, "2022-03-20 01:39:05");
         Truck result = truckService.getById(1);
         //Assert
         assertEquals(10.0, result.getLatitude());

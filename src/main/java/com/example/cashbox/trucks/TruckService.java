@@ -30,13 +30,13 @@ public class TruckService {
         return truckRepository.findAll();
     }
 
-    public void updateLocation(int id, TruckUpdateLocationRequest truckUpdateLocationRequest) {
+    public void updateLocation(int id, double latitude, double longitude, String dateTimeString) {
         Optional<Truck> result = truckRepository.findById(id);
         if (result.isPresent()) {
             Truck truck = result.get();
-            truck.setLatitude(truckUpdateLocationRequest.getLatitude());
-            truck.setLongitude(truckUpdateLocationRequest.getLongitude());
-            truck.setLastUpdated(parseDateTime(truckUpdateLocationRequest.getDateTimeString()));
+            truck.setLatitude(latitude);
+            truck.setLongitude(longitude);
+            truck.setLastUpdated(parseDateTime(dateTimeString));
             truckRepository.save(truck);
         } else {
             throw new TruckNotFoundException(id);

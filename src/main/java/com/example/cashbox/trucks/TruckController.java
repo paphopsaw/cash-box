@@ -41,7 +41,10 @@ public class TruckController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public MessageResponse updateLocation(@PathVariable int id,
                                         @RequestBody TruckUpdateLocationRequest truckUpdateLocationRequest) {
-        truckService.updateLocation(id, truckUpdateLocationRequest);
+        double latitude = truckUpdateLocationRequest.getLatitude();
+        double longitude = truckUpdateLocationRequest.getLongitude();
+        String dateTimeString = truckUpdateLocationRequest.getDateTimeString();
+        truckService.updateLocation(id, latitude, longitude, dateTimeString);
         MessageResponse messageResponse = new MessageResponse();
         messageResponse.setMessage("Location updated.");
         return messageResponse;
